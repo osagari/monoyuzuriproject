@@ -1,0 +1,15 @@
+h1 {
+    font-size: 32pt;
+    color: #ccc;
+    text-align:center;
+    margin:0px;
+}
+body {
+    font-size: 10pt;
+    color: #aaa;
+    margin:3px;
+}
+p {
+    font-size: 5pt;
+    margin: 0px 10px;
+}
