@@ -1,0 +1,14 @@
+{
+  "name": "node_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "book_test.js",
+  "scripts": {
+    "start": "node book_test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.8"
+  }
+}
