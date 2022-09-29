@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html">
+    <title>Chat</title>
+</head>
+<body>
+    <h1>Test Chat<h1>
+    <input id="inputtext" type="text" onkeyup="textcheck();">
+    <input id="sendbutton" type="submit" value="送信">
+    <ul id="messageList" style="list-style: none;"/>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        const cleartext = () =>{
+            document.getElementById('inputtext').value = '';
+        }
+
+        const AddMessage = (message) => {
+            const ul = document.getElementById('messageList');
+            const li = document.createElement('li');
+            const text = document.createTextNode(message);
+            li.appendChild(text);
+            ul.appendChild(li);
+        }
+
+        //送信ボタンが押されたら
+        document.getElementById('sendbutton').addEventListener('click',() =>{
+
+            //テキスト取得
+            let inputmessage = document.getElementById('inputtext').value;
+
+            if(inputmessage === ''){
+                return;
+            }
+
+            //expressのsendMessageイベントを発生させる
+            socket.emit('sendMessage',inputmessage);
+
+            cleartext();
+        });
+
+        //receiveMessageイベントが発生したら
+        socket.on('receiveMessage',(message) =>{
+            
+            //メッセージ追加
+            AddMessage(message);
+        });
+        
+        const textcheck = () => {
+            const msg = document.getElementById('inputtext').value;
+            if(String(msg).length > 10){
+                const button = document.getElementById('sendbutton');
+                button.disabled = true;
+            }if(String(msg).length <= 10){
+                const button = document.getElementById('sendbutton');
+                button.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
