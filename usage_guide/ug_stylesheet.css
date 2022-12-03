@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/*基準 PC向けサイズ1440*/
 h1{
   font-size: 45px;
   margin: 0 auto; 
@@ -17,11 +18,43 @@ h1{
 }
 .mypage-link{
   background-color: rgb(208, 208, 208);
+  font-size: 35px;
 }
 .toukou-link{
   background-color: rgb(255, 77, 77);
   color: whitesmoke;
+  font-size: 35px;
 }
+
+  /*ちょっと小さいサイズ*/
+@media screen and (max-width: 1400px){
+  h1{
+    font-size: 30px;
+    margin: 0 auto; 
+    text-align: center;
+    background-color: rgb(154, 255, 123);
+    padding: 40px;
+  }
+  .search-box{
+    font-size: 30px;
+  }
+  .search-button{
+    color: whitesmoke;
+    background-color: gray ;
+    font-size: 20px;
+  }
+  .mypage-link{
+    background-color: rgb(208, 208, 208);
+    font-size: 20px;
+  }
+  .toukou-link{
+    background-color: rgb(255, 77, 77);
+    color: whitesmoke;
+    font-size: 20px;
+  }
+  
+}
+
 
   
 h2{
@@ -142,3 +175,4 @@ https://engineer-labo.com/image_text_center/*/
     display: block;
   }
 /*ここまでタブ選択ラジオボタン*/
+/*PC向けサイズ*/
