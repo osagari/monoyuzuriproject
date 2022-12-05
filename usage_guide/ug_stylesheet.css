@@ -1,15 +1,20 @@
 @charset "UTF-8";
 
+.page-header{
+  background-color: rgb(156, 232, 106);
+
+}
+
 /*基準 PC向けサイズ1440*/
 h1{
   font-size: 45px;
   margin: 0 auto; 
   text-align: center;
-  background-color: rgb(154, 255, 123);
   padding: 40px;
 }
 .search-box{
-  font-size: 45px;
+  font-size: 35px;
+  background-color: white;
 }
 .search-button{
   color: whitesmoke;
@@ -32,7 +37,7 @@ h1{
     font-size: 30px;
     margin: 0 auto; 
     text-align: center;
-    background-color: rgb(154, 255, 123);
+    background-color: rgb(156, 232, 106);
     padding: 40px;
   }
   .search-box{
@@ -175,4 +180,3 @@ https://engineer-labo.com/image_text_center/*/
     display: block;
   }
 /*ここまでタブ選択ラジオボタン*/
-/*PC向けサイズ*/
