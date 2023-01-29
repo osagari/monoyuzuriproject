@@ -12,6 +12,11 @@ const HomeRouter = require('./routes/home');
 
 const newRouter = require('./routes/new');
 
+const detailRouter = require('./routes/detail');
+
+const mypageRouter = require('./routes/mypage');
+
+
 //静的ファイル設定
 app.use(express.static('public'));
 
@@ -22,6 +27,9 @@ app.set('view engine','ejs');
 app.use(LoginRouter);
 app.use(HomeRouter);
 app.use(newRouter);
+app.use(detailRouter);
+app.use(mypageRouter);
+
 
 app.get("/",(req,res)=>{
 
