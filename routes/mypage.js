@@ -16,8 +16,8 @@ router.get("/mypage/fav",(req,res)=>{
 });
 
 router.get("/mypage/posted",(req,res)=>{
-    res.render("../views/mypage/" + req.query.select);
-    console.log(req.query,select);
+    res.render("../views/mypage",{selct:req.query.select});
+    console.log(req.query.select);
 });
 
 router.get("/")
