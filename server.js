@@ -2,36 +2,40 @@
 const express = require('express');
 
 const app = express();
-const port = 3000;
-const UserRouter = require('./routes/user');
+const port = 3000; //ポート番号
 
-//ミドルウェアの読み込み
-app.use(logger);
+//ログイン用
+const LoginRouter = require('./routes/login');
+
+//homeからのルータ
+const HomeRouter = require('./routes/home');
+
+const newRouter = require('./routes/new');
+
+const detailRouter = require('./routes/detail');
+
+const mypageRouter = require('./routes/mypage');
+
+
+//静的ファイル設定
+app.use(express.static('public'));
 
 //ejsテンプレートエンジン設定部分
 app.set('view engine','ejs');
 
+//Router類読み込み
+app.use(LoginRouter);
+app.use(HomeRouter);
+app.use(newRouter);
+app.use(detailRouter);
+app.use(mypageRouter);
 
-//localhostのとき
-app.get("/", (request, response) => {
-    //response.send('大元のページです');
-    
-    //ejsを読み込んで表示
-    response.render("index",{text: "Node.jsとexpress"})
-});
 
-//ルーティング部分
-app.use("/user",UserRouter);
+app.get("/",(req,res)=>{
 
-//存在しないとき
-app.get('*',(request,response) =>{
-    response.send(404,'お探しのページが見つかりませんでした');
-});
+    //localhostにアクセスしたら一旦loginにリダイレクト
+    res.redirect('/login')
+})
 
-//仲介役のミドルウェア(認証などの管理を行う?)
-function logger(request,response,next){
-    console.log(request.originalUrl);
-    next();
-}
-
+//サーバ起動
 app.listen(port,() => console.log(`サーバが起動しました.ポート番号は${port}です.`));
