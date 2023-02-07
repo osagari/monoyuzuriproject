@@ -4,18 +4,18 @@ const express = require('express');
 //router
 const router = express.Router();
 
-// login
-router.get("/",(req,res) => {
+// /login
+router.get("/login",(req,res) => {
     res.render("../views/login");
 });
 
-// login/terms
-router.get("/terms",(req,res) =>{
+// /login/terms
+router.get("/login/terms",(req,res) =>{
     res.render("../views/terms");
 });
 
-// login/privacy
-router.get("/privacy",(req,res) =>{
+// /login/privacy
+router.get("/login/privacy",(req,res) =>{
     res.render("../views/privacy");
 });
 
