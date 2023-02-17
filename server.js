@@ -16,6 +16,11 @@ const detailRouter = require('./routes/detail');
 
 const mypageRouter = require('./routes/mypage');
 
+const monoRouter =require('./routes/mono');
+
+const guideRouter = require('./routes/guide');
+
+const uploadRouter = require('./routes/upload');
 
 //静的ファイル設定
 app.use(express.static('public'));
@@ -29,6 +34,9 @@ app.use(HomeRouter);
 app.use(newRouter);
 app.use(detailRouter);
 app.use(mypageRouter);
+app.use(monoRouter);
+app.use(guideRouter);
+app.use(uploadRouter);
 
 
 app.get("/",(req,res)=>{
