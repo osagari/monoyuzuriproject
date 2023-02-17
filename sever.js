@@ -20,6 +20,8 @@ const serachRouter = require('./routes/search');
 
 const chatRouter = require('./routes/chat');
 
+const guideRouter = require('./routes/guide');
+
 //静的ファイル設定
 app.use(express.static('public'));
 
@@ -34,6 +36,7 @@ app.use(detailRouter);
 app.use(mypageRouter);
 app.use(serachRouter);
 app.use(chatRouter);
+app.use(guideRouter);
 
 app.get("/",(req,res)=>{
 
