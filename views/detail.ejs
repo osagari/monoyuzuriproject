@@ -7,8 +7,25 @@
     <title>monodetail</title>
 </head>
 <body>
-    <p>モノ詳細</p>
+    <a href="/home"><input type="submit" value="戻る"></a>
+    <p>mono name</p>
+    <!---確認のためidを表示する--->
+    <%-detail_id%>
+    <input type="submit" value="お気に入り登録">
+    <input type="submit" value="コメントする">
+    <input type="submit" value="譲ってもらう" onclick="hand_over()">
+    <script>
+        function hand_over(){
+            if(window.confirm("譲ってもらいますか?")){
+                location.href = "/chat"; //mono_idとchat_idを付与してページ移動(今は実装できてない)
+            }     
+        }
+    </script>
+    <p>投稿者名</p>
     <p>物の説明</p>
+    <input type = "text">
     <p>コメント</p>
+    <input type="text">
+    <input type="submit" value="コメントを送る">
 </body>
 </html>

@@ -16,6 +16,9 @@ const detailRouter = require('./routes/detail');
 
 const mypageRouter = require('./routes/mypage');
 
+const serachRouter = require('./routes/search');
+
+const chatRouter = require('./routes/chat');
 
 //静的ファイル設定
 app.use(express.static('public'));
@@ -29,13 +32,14 @@ app.use(HomeRouter);
 app.use(newRouter);
 app.use(detailRouter);
 app.use(mypageRouter);
-
+app.use(serachRouter);
+app.use(chatRouter);
 
 app.get("/",(req,res)=>{
 
     //localhostにアクセスしたら一旦loginにリダイレクト
-    res.redirect('/login')
-})
+    res.redirect('/login');
+});
 
 //サーバ起動
 app.listen(port,() => console.log(`サーバが起動しました.ポート番号は${port}です.`));

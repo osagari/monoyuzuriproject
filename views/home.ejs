@@ -4,13 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
+    <title><%-title%></title>
 </head>
 <body>
-    <input type="text" value="">
-    <input type="submit" value="検索">
-    <input type="button" name="mypage" value="マイページ">
+    <input type="text" value="" id = "findmono">
+    <input type="submit" value="検索" onclick="searchclicked()">
+    <a href="/new"><input type="submit" value="投稿"></a>
+    <script>
+        function searchclicked(){
+            let formtext = document.getElementById("findmono");
+            if(formtext.value){ //検索の文字列が参照できるなら
+                location.href = `/search?query=${formtext.value}`;//クエリパラメータとして追記する
+            }
+        }
+    </script>
+    <a href="/mypage"><input type="button" name="mypage" value="マイページ"></a>
     <p>新着情報</p>
-    <img src= "demo.png" alt="デモ画像"/>
+    <!---ルーティングの移動用仮画像--->
+    <img src="../demo.png" onclick="imgclick()"/>
+    <script>
+
+        function imgclick(){
+            console.log("imgclick called");
+            //ここでエラー(/detail/:mono_idが参照できていないから?)
+            //location.href = '/detail';
+        }
+    </script>
 </body>
 </html>
