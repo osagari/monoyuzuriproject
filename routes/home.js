@@ -8,7 +8,7 @@ const router = express.Router();
 router.get("/home",(req,res)=>{
     
     //home.ejsファイルを描画
-    res.render("../views/home");
+    res.render("../views/home",{title:"home"});
 });
 
 
