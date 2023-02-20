@@ -5,8 +5,8 @@ const express = require('express');
 const router = express.Router();
 
 router.get("/detail/:mono_id",(req,res)=>{
-    res.render("../views/detail");
-    console.log(req.params.mono_id);
+    //ejsファイルにmono_idを渡す
+    res.render("../views/detail",{detail_id:req.params.mono_id});
 });
 
 module.exports = router;
