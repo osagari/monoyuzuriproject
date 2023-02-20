@@ -26,6 +26,7 @@ const uploadRouter = require('./routes/upload');
 
 //静的ファイル設定
 app.use(express.static('public'));
+app.use(express.static('uploaded-img'));
 
 //ejsテンプレートエンジン設定部分
 app.set('view engine','ejs');
