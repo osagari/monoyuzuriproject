@@ -16,3 +16,4 @@ router.get("/new/result",(req,res)=>{
 
 //他のファイルから参照できるようにする
 module.exports = router;
+
