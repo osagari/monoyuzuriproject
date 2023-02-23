@@ -5,9 +5,9 @@ const mysql = require('mysql');
 //router
 const router = express.Router();
 
-router.use(bodyparser.urlencoded({extended: false}));
-router.use(bodyparser.json());
-router.use(logger);
+//router.use(bodyparser.urlencoded({extended: false}));
+//router.use(bodyparser.json());
+
 
 // mysqlとの接続情報
 /*const dbinfo = mysql.createConnection({
@@ -32,13 +32,5 @@ router.get("/search",(req,res)=>{
     console.log(req.query.str);
     res.render("../views/search",{title:"search"});
 });
-
-//urlを表示するログ
-function logger(req,res,next){
-    if(req.originalUrl !== undefined){
-        console.log(req.originalUrl);
-    }
-    next();
-}
 
 module.exports = router;
