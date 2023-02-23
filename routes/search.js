@@ -5,9 +5,9 @@ const mysql = require('mysql');
 //router
 const router = express.Router();
 
-//router.use(bodyparser.urlencoded({extended: false}));
-//router.use(bodyparser.json());
-
+router.use(bodyparser.urlencoded({extended: false}));
+router.use(bodyparser.json());
+router.use(logger);
 
 // mysqlとの接続情報
 /*const dbinfo = mysql.createConnection({
@@ -16,12 +16,10 @@ const router = express.Router();
     password: '',
     database: 'monoyuzuri_db'
 });
-
 dbinfo.connect((err) =>{
     if(err) throw err;//接続エラーとなったら例外を出す
     console.log('database is connectied.'); 
     let sql = "select student_num from user";//sql文
-
     //クエリ文で学籍番号を取得
     dbinfo.query(sql,(err,result,fileds)=>{
         if(err) throw err;
@@ -34,5 +32,13 @@ router.get("/search",(req,res)=>{
     console.log(req.query.str);
     res.render("../views/search",{title:"search"});
 });
+
+//urlを表示するログ
+function logger(req,res,next){
+    if(req.originalUrl !== undefined){
+        console.log(req.originalUrl);
+    }
+    next();
+}
 
 module.exports = router;

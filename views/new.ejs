@@ -7,18 +7,14 @@
     <title>new</title>
 </head>
 <body>
+    <h1><a href="/home">osagari</a></h1>
     <h2>投稿画面</h2>
-    <form action="/new" method="post" enctype="multipart/form-data">
-        <p>画像</p>
-        <input type="file" name="monoimg">
-        <%if(imgerror){%>
-            <p>画像が選択されていません</p>
-        <%}%>
-        <p>物の名前(必須)</p>
-        <input type = "text" name="mononame">
-        <p>物の説明(必須)</p>
-        <input type = "text" name="monoexplanation">
-        <input type = "submit" value="投稿する">
-    </form>
+    <p>画像</p>
+    <img src="../public/demo.png"/>
+    <p>物の名前(必須)</p>
+    <input type = "text">
+    <p>物の説明(必須)</p>
+    <input type = "text">
+    <a href="/new/result"><button>投稿する</button></a>
 </body>
 </html>
