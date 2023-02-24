@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.get("/mypage",(req,res)=>{
     res.render("../views/mypage");
-    //console.log(req.params.mono_id);
 });
 
 //お気に入り
@@ -27,6 +26,16 @@ router.get("/mypage/posted",(req,res)=>{
             res.status(404).send();
             break;
     }
+});
+
+//マイページ物詳細ページ
+router.get("/mypage/detail/:mono_id",(req,res)=>{
+    res.render("../views/mypage");
+});
+
+//マイページ編集用ページ
+router.get("/mypage/detail/:mono_id/edit",(req,res)=>{
+    res.render("../views/mypage");
 });
 
 module.exports = router;

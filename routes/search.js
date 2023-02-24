@@ -1,13 +1,8 @@
 const express = require('express'); //express 読み込み
-const bodyparser = require('body-parser');
 const mysql = require('mysql');
 
 //router
 const router = express.Router();
-
-//router.use(bodyparser.urlencoded({extended: false}));
-//router.use(bodyparser.json());
-
 
 // mysqlとの接続情報
 /*const dbinfo = mysql.createConnection({
@@ -32,7 +27,7 @@ dbinfo.connect((err) =>{
 // /search
 router.get("/search",(req,res)=>{
     console.log(req.query.str);
-    res.render("../views/search",{title:"search"});
+    res.render("../views/search");
 });
 
 module.exports = router;
