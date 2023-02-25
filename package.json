@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 8036d39bfa8b6209fc7d3cfdd69d2b4930fcd260
+
 {
   "name": "monoyuzuriproject",
   "version": "1.0.0",
@@ -21,28 +18,3 @@
     "nodemon": "^2.0.15"
   }
 }
-<<<<<<< HEAD
-=======
-{
-  "name": "monoyuzuriproject",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "ejs": "^3.1.6",
-    "express": "^4.17.2",
-    "express-fileupload": "^1.4.0",
-    "mysql": "^2.18.1",
-    "nodemon": "^2.0.15"
-  }
-}
->>>>>>> 739836d4f8fafa2f2c8ba20f406209996755b558
-=======
->>>>>>> 8036d39bfa8b6209fc7d3cfdd69d2b4930fcd260
