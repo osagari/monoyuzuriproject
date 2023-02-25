@@ -6,13 +6,6 @@ const router = express.Router();
 
 router.get("/mypage",(req,res)=>{
     res.render("../views/mypage");
-<<<<<<< HEAD
-<<<<<<< HEAD
-    console.log(req.params.mono_id);
-=======
->>>>>>> 739836d4f8fafa2f2c8ba20f406209996755b558
-=======
->>>>>>> 8036d39bfa8b6209fc7d3cfdd69d2b4930fcd260
 });
 
 //お気に入り

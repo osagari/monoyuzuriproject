@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<%-include('../public/html/home.html');%>
-=======
-=======
->>>>>>> 8036d39bfa8b6209fc7d3cfdd69d2b4930fcd260
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -26,9 +20,14 @@
     </script>
     <a href="/mypage"><input type="button" name="mypage" value="マイページ"></a>
     <p>新着情報</p>
-    <!---ルーティングの移動用仮画像--->
-    <img src="../demo.png" onclick="imgclick()"/>
+    <div class="mono_container">
+        <div class="mono_item">
+            <!---ルーティングの移動用仮画像--->
+            <img src="../demo.png" onclick="imgclick()"/>
+        </div>
+    </div>
     <script>
+
         function imgclick(){
             console.log("imgclick called");
             //ここでエラー(/detail/:mono_idが参照できていないから?)
@@ -36,9 +35,4 @@
         }
     </script>
 </body>
-<<<<<<< HEAD
 </html>
->>>>>>> 739836d4f8fafa2f2c8ba20f406209996755b558
-=======
-</html>
->>>>>>> 8036d39bfa8b6209fc7d3cfdd69d2b4930fcd260
