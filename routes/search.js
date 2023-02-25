@@ -1,10 +1,9 @@
-const express = require('express'); //express 読み込み
-const bodyparser = require('body-parser');
-const mysql = require('mysql');
+const express = require('express');
 
 //router
 const router = express.Router();
 
+<<<<<<< HEAD
 router.use(bodyparser.urlencoded({extended: false}));
 router.use(bodyparser.json());
 router.use(logger);
@@ -27,11 +26,14 @@ dbinfo.connect((err) =>{
     });
 });*/
 
+=======
+>>>>>>> 739836d4f8fafa2f2c8ba20f406209996755b558
 // /search
 router.get("/search",(req,res)=>{
-    console.log(req.query.str);
-    res.render("../views/search",{title:"search"});
+    console.log(req.query.word); //入力された内容を出力
+    res.render("../views/search");
 });
+<<<<<<< HEAD
 
 //urlを表示するログ
 function logger(req,res,next){
@@ -41,4 +43,6 @@ function logger(req,res,next){
     next();
 }
 
+=======
+>>>>>>> 739836d4f8fafa2f2c8ba20f406209996755b558
 module.exports = router;
