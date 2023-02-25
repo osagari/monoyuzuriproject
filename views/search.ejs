@@ -14,7 +14,7 @@
         function searchclicked(){
             let formtext = document.getElementById("findmono");
             if(formtext.value){ //検索の文字列が参照できるなら
-                location.href = `/search?query=${formtext.value}`;//クエリパラメータとして追記する
+                location.href = `/search?word=${formtext.value}`;//クエリパラメータとして追記する
             }
         }
     </script>

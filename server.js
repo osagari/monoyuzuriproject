@@ -2,7 +2,7 @@
 const express = require('express');
 
 const app = express();
-const port = 3000; //ポート番号
+const port = process.env.PORT || 3000; //ポート番号
 
 //ログイン用
 const LoginRouter = require('./routes/login');
