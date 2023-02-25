@@ -30,12 +30,29 @@ router.get("/mypage/posted",(req,res)=>{
 
 //マイページ物詳細ページ
 router.get("/mypage/detail/:mono_id",(req,res)=>{
-    res.render("../views/mypage");
+    res.render("../views/detail");
 });
 
 //マイページ編集用ページ
-router.get("/mypage/detail/:mono_id/edit",(req,res)=>{
-    res.render("../views/mypage");
+router.get("/mypage/detail/:mono_id/edit", (req,res) =>{
+    res.render("../views/edit",{imgerror:false});
+});
+
+router.post("/mypage/detail/:mono_id/edit", (req,res) =>{
+
+    if(!req.files) return res.status(400).render("../views/edit",{imgerror:true});
+
+    let imgFile = req.files.monoimg;
+    let imgfilepath = `./uploaded-img/${imgFile.name}`;
+    patharray.push(imgfilepath); //配列に追記する
+
+    //画像ファイルの場所指定設定
+    imgFile.mv(imgfilepath,(err) =>{
+        if(err) {
+            return res.status(500).send(err); //空のレスポンスを返さないためにreturn
+        }
+        res.render("../views/uploadresult");
+    });
 });
 
 module.exports = router;
