@@ -5,10 +5,10 @@ const express = require('express');
 const router = express.Router();
 
 // /home
-router.get("/home",(req,res)=>{
+router.get("/guide",(req,res)=>{
     
     //home.ejsファイルを描画
-    res.render("../views/home");
+    res.render("../views/guide");
 });
 
 

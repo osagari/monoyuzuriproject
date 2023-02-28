@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+</head>
+<body>
+    <input type="text" value="" id = "findmono">
+    <input type="submit" value="検索">
+    <input type="button" name="mypage" value="マイページ" onclick="location.href='/mypage'">
+    <a href="/new">投稿</a>
+    <p>新着情報</p>
+    <!---ルーティングの移動用仮画像--->
+    <img src="../demo.png" onclick="imgclick()"/>
+    <script>
+        function imgclick(){
+            //ここでエラー(/detail/:mono_idが参照できていないから?)
+            location.href = '/detail';
+        }
+    </script>
+</body>
+</html>

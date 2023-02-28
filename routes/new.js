@@ -4,17 +4,12 @@ const express = require('express');
 //router
 const router = express.Router();
 
-const fileUpload = require('express-fileupload');
-
-router.use(fileUpload());
-
-patharray = [];
-
 // /new
 router.get("/new",(req,res) => {
-    res.render("../views/new",{imgerror:false});
+    res.render("../views/new");
 });
 
+<<<<<<< HEAD
 //投稿するときのpost(submitのボタンが押されたら呼ばれる)
 router.post("/new", (req,res) =>{
 
@@ -31,6 +26,11 @@ router.post("/new", (req,res) =>{
         }
         res.render("../views/uploadresult");
     });
+=======
+// /new/result
+router.get("/new/result",(req,res)=>{
+    res.render("../views/uploadreult");
+>>>>>>> routingbranch
 });
 
 //他のファイルから参照できるようにする

@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.get("/mypage",(req,res)=>{
     res.render("../views/mypage");
+    console.log(req.params.mono_id);
 });
 
 //お気に入り
