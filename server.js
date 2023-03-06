@@ -2,7 +2,7 @@
 const express = require('express');
 
 const app = express();
-const port = 3000; //ポート番号
+const port = process.env.PORT || 3000; //ポート番号
 
 //ログイン用
 const LoginRouter = require('./routes/login');
@@ -24,6 +24,9 @@ const guideRouter = require('./routes/guide');
 
 //静的ファイル設定
 app.use(express.static('public'));
+
+//画像格納ファイル設定
+app.use(express.static('uploaded-img'));
 
 //ejsテンプレートエンジン設定部分
 app.set('view engine','ejs');
