@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
+    <title>search</title>
 </head>
 <body>
     <input type="text" value="" id = "findmono">
@@ -14,17 +14,20 @@
         function searchclicked(){
             let formtext = document.getElementById("findmono");
             if(formtext.value){ //検索の文字列が参照できるなら
-                location.href = `/search?query=${formtext.value}`;//クエリパラメータとして追記する
+                location.href = `/search?word=${formtext.value}`;//クエリパラメータとして追記する
             }
         }
     </script>
     <a href="/mypage"><input type="button" name="mypage" value="マイページ"></a>
     <p>新着情報</p>
-        <% mono_data.forEach(function (v) {%>
-            <!--タグにデータ埋め込み-->
-            <img src = <%=v.img_path%> id=<%=v.mono_id%> onclick="imgclick(this)">
-        <%});%>
+    <div class="mono_container">
+        <div class="mono_item">
+            <!---ルーティングの移動用仮画像--->
+            <img src="../demo.png" onclick="imgclick()"/>
+        </div>
+    </div>
     <script>
+
         function imgclick(){
             console.log("imgclick called");
             //ここでエラー(/detail/:mono_idが参照できていないから?)
