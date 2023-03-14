@@ -64,7 +64,7 @@ router.post("/new", (req,res) =>{
             }
 
             //一応挿入時のidを確認用に出力
-            console.log(rows.insertId);
+            console.log(rows);
         });
     });
 });
