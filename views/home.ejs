@@ -20,13 +20,17 @@
     </script>
     <a href="/mypage"><input type="button" name="mypage" value="マイページ"></a>
     <p>新着情報</p>
-    <!---ルーティングの移動用仮画像--->
-    <img src="../demo.png" onclick="imgclick()"/>
+        <% mono_data.forEach(function (v) {%>
+            <!--タグにデータ埋め込み-->
+            <img src = <%=v.img_path%> id=<%=v.mono_id%> onclick="imgclick(this)">
+        <%});%>
     <script>
-        function imgclick(){
-            console.log("imgclick called");
-            //ここでエラー(/detail/:mono_idが参照できていないから?)
-            //location.href = '/detail';
+
+        function imgclick(ele){
+            const id_value = ele.id; //自分自身のidの値を取得
+            if(id_value){ //念のため参照できるか確認
+                location.href = `/detail/${id_value}`;
+            }
         }
     </script>
 </body>

@@ -23,7 +23,7 @@ const chatRouter = require('./routes/chat');
 const guideRouter = require('./routes/guide');
 
 //静的ファイル設定
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 //ejsテンプレートエンジン設定部分
 app.set('view engine','ejs');
