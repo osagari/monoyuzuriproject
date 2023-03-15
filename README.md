@@ -11,6 +11,7 @@ Mysqlの接続に必要な情報は.envファイルを用いて、隠してい�
 
 *画像用テーブル img_table*
 mono_id INT型 オートインクリメント プライマリキー
+
 img_path VARCHAR型 長さ200
 
 *ユーザテーブル user*
