@@ -20,7 +20,8 @@ const pool = mysql.createPool({
     host: dbinfo.parsed.HOSTNAME,
     user: dbinfo.parsed.DBUSER,
     password: dbinfo.parsed.PASSWORD,
-    database: dbinfo.parsed.DBNAME
+    database: dbinfo.parsed.DBNAME,
+    timezone: "jst"
 });
 
 // /home
