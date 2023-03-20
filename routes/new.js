@@ -76,7 +76,7 @@ async function insert_product(id,product_info){
     });
 
     console.log(rows);
-    connection.release();
+    //connection.release();
 }
 
 // /new
