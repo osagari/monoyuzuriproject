@@ -22,11 +22,7 @@ router.post("/new", (req,res) =>{
 
     let imgFile = req.files.monoimg;
     let imgfilepath = `./uploaded-img/${imgFile.name}`;
-    patharray.push(imgfilepath); //配列に追記する
-    for (let i in patharray){
-        console.log(patharray[i]); //パスを確認
-    }
-
+   
     //画像ファイルの場所指定設定
     imgFile.mv(imgfilepath,(err) =>{
         if(err) {
