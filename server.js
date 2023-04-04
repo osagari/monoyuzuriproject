@@ -16,7 +16,7 @@ const detailRouter = require('./routes/detail');
 
 const mypageRouter = require('./routes/mypage');
 
-
+const searchRouter = require('./routes/search');
 //const monoRouter = require('./routes/mono');
 
 const guideRouter = require('./routes/guide');
@@ -36,6 +36,7 @@ app.use(HomeRouter);
 app.use(newRouter);
 app.use(detailRouter);
 app.use(mypageRouter);
+app.use(searchRouter);
 
 //app.use(monoRouter);
 app.use(guideRouter);
