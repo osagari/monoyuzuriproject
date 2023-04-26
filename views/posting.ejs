@@ -9,10 +9,17 @@
 <body>
     <h1>投稿したもの</h1>
     <p>投稿中</p>
-    <img src="../demo.png" onclick="imgclick()">
+    <%for(let i=0; i<postdata.length; i++){%>
+        <%-postdata[i].mono_name%>
+        <img src=<%=postpaths[i].img_path%> id=<%=postdata[i].mono_id%> onclick="imgclick(this)">
+        <br><br>
+    <%}%>
     <script>
-        function imgclick(){
-            console.log("imgclick called");
+        function imgclick(ele){
+            const id_value = ele.id; //自分自身のidの値を取得
+            if(id_value){ //念のため参照できるか確認
+                location.href = `/mypage/detail/:${id_value}`;
+            }
         }
     </script>
 </body>
