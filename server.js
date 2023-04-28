@@ -16,7 +16,7 @@ const detailRouter = require('./routes/detail');
 
 const mypageRouter = require('./routes/mypage');
 
-const serachRouter = require('./routes/search');
+const searchRouter = require('./routes/search');
 
 const chatRouter = require('./routes/chat');
 
@@ -34,7 +34,7 @@ app.use(HomeRouter);
 app.use(newRouter);
 app.use(detailRouter);
 app.use(mypageRouter);
-app.use(serachRouter);
+app.use(searchRouter);
 app.use(chatRouter);
 app.use(guideRouter);
 
