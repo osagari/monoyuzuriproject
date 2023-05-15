@@ -58,6 +58,6 @@ router.get("/search",(req,res)=>{
             
         });
     });
-    res.render("../views/search",{path:});
+    res.render("../views/home",{mono_data:newmono_data});
 });
 module.exports = router;
