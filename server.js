@@ -23,6 +23,9 @@ const guideRouter = require('./routes/guide');
 
 const uploadRouter = require('./routes/upload');
 
+//mypageからのルータ
+const editRouter = require('./routes/edit');
+
 
 //静的ファイル設定
 app.use(express.static("public"));
@@ -41,6 +44,8 @@ app.use(searchRouter);
 //app.use(monoRouter);
 app.use(guideRouter);
 app.use(uploadRouter);
+//mypageからのルータ
+app.use(editRouter);
 
 
 app.get("/",(req,res)=>{

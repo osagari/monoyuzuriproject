@@ -11,3 +11,7 @@ elif [ $DATA == "n" ]; then
 else
 	sudo /opt/lampp/lampp status #yes no以外なら再度現状を表示
 fi
+
+#sudo /opt/lampp/lampp start
+
+

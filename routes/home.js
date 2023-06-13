@@ -21,31 +21,77 @@ const pool = mysql.createPool({
     user: dbinfo.parsed.DBUSER,
     password: dbinfo.parsed.PASSWORD,
     database: dbinfo.parsed.DBNAME,
-    timezone: "jst"
+    timezone: "jst",
+    charset: "utf8mb4" //文字化け対策の指定
 });
 
-// /home
-router.get("/home",(req,res)=>{
-    
-    pool.getConnection((err,connection)=>{
-        if(err) throw err; //接続失敗時に例外を出す
-        
-        console.log("接続が完了しました");
-
-        const sql='SELECT * FROM img_table WHERE mono_id IS NOT NULL';
-        connection.query(sql,(err,rows)=>{
-            connection.release();
-
-            if(err){
-                console.log(err);
-            }
-
-            newmono_data = rows;
+//画像テーブルからidとパスを持ったオブジェクトの配列を取得する関数
+async function getimg(){
+    const connection = await new Promise((resolve,reject) =>{
+        pool.getConnection((err,connection)=>{
+            if(err) reject(err); //接続失敗時
+            resolve(connection); 
         });
     });
 
-    //home.ejsファイルを描画
-    res.render("../views/home",{mono_data:newmono_data});
+    const rows = await new Promise((resolve,reject)=>{
+        //LIMITの後の数字で取得件数を変更できる(undefinedまで参照するとエラーになるので注意)
+        connection.query('SELECT * FROM img_table ',(err,rows)=>{
+            
+            if(err) reject(err);//sql文でエラー
+            resolve(rows);
+        });
+    });
+
+    //console.log(rows);
+    return rows;
+}
+
+//指定されたidの物の商品名を取得する関数
+//引数: id: データ挿入時のid
+async function getname(id){
+    const connection = await new Promise((resolve,reject) =>{
+        pool.getConnection((err,connection)=>{
+            if(err) reject(err); //接続失敗時
+            resolve(connection); 
+        });
+    });
+
+    const rows = await new Promise((resolve,reject)=>{
+
+        //指定のidであったら商品テーブルの物の名前を取得するsql
+        connection.query(`SELECT mono_name FROM product_table WHERE mono_id=${id}`,(err,rows)=>{
+            
+            if(err) reject(err);//sql文でエラー
+            resolve(rows);
+        });
+    });
+
+    //console.log(rows);
+    return rows;
+}
+
+// /home
+router.get("/home",(req,res,next)=>{
+    
+    //即時関数で非同期実行
+    (async () =>{
+        newmono_data = await getimg();
+        
+        //名前の表示確認テスト
+        /*for(let i = 0; i < 5; i++){
+            console.log(await getname(newmono_data[i].mono_id));
+        }*/
+        
+        //home.ejsファイルを描画
+        res.render("../views/home",{mono_data:newmono_data});
+    })().catch(next);
+});
+
+//エラー処理
+router.get((err,req,res,next) => {
+    console.error(err.stack);
+    res.status(500).send("Internal Server Error");
 });
 
 

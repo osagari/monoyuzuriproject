@@ -19,12 +19,13 @@ router.use(fileupload());
 //データベースとの接続プール
 //config()のオブジェクト.parsed -> json形式で記述の意
 const pool = mysql.createPool({
-    connectionLimit: 2,
+    connectionLimit: dbinfo.parsed.CCL,
     host: dbinfo.parsed.HOSTNAME,
     user: dbinfo.parsed.DBUSER,
     password: dbinfo.parsed.PASSWORD,
     database: dbinfo.parsed.DBNAME,
-    timezone: "jst"
+    timezone: "jst",
+    charset: "utf8mb4" //文字化け対策の指定
 });
 
 //投稿状態を表すオブジェクト
@@ -52,7 +53,7 @@ async function insertimg(path){
         });
     });
 
-    console.log(rows);
+    //console.log(rows);
     //connection.release();
     return rows.insertId;//挿入したときのidを返す
 }
@@ -75,7 +76,7 @@ async function insert_product(id,product_info){
         });
     });
 
-    console.log(rows);
+    //console.log(rows);
     connection.release();
 }
 
@@ -85,7 +86,7 @@ router.get("/new",(req,res) => {
 });
 
 //投稿するときのpost(submitのボタンが押されたら呼ばれる)
-router.post("/new",(req,res) =>{
+router.post("/new",(req,res,next) =>{
 
     //画像ファイルが選択されていないとき
     if(!req.files) return res.render("../views/new",{imgerror:true});
@@ -97,6 +98,7 @@ router.post("/new",(req,res) =>{
     //画像ファイルの場所指定設定
     imgFile.mv(imgfilepath,(err) =>{
         if(err) {
+            console.log(err);
             return res.status(500).send(err);
         }
         res.render("../views/uploadresult");
@@ -106,8 +108,13 @@ router.post("/new",(req,res) =>{
     (async () =>{
         const insertId = await insertimg(imgdb_filepath);
         await insert_product(insertId,req.body);
-        pool.end();//プロセス終了
-    })();
+    })().catch(next);
+});
+
+//エラー処理
+router.get((err,req,res,next) => {
+    console.error(err.stack);
+    res.status(500).send("Internal Server Error");
 });
 
 //他のファイルから参照できるようにする
