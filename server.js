@@ -25,8 +25,7 @@ const uploadRouter = require('./routes/upload');
 
 //mypageからのルータ
 const editRouter = require('./routes/edit');
-
-
+const chatRouter = require('./routes/chat');
 //静的ファイル設定
 app.use(express.static("public"));
 
@@ -46,7 +45,7 @@ app.use(guideRouter);
 app.use(uploadRouter);
 //mypageからのルータ
 app.use(editRouter);
-
+app.use(chatRouter);
 
 app.get("/",(req,res)=>{
 

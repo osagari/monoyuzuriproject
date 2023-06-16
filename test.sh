@@ -14,4 +14,3 @@ fi
 
 #sudo /opt/lampp/lampp start
 
-

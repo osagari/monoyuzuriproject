@@ -9,5 +9,17 @@
 <body>
     <h1>投稿したもの</h1>
     <p>過去の取引</p>
-</body>
+    <a href="/guide/posted?select=posting">
+        <img src="/demo.png" alt="基礎電気回路教科書">
+
+        <script>
+           function imgclick(ele){
+                const id_value = ele.id; //自分自身のidの値を取得
+                if(id_value){ //念のため参照できるか確認
+                    location.href = `/detail/${id_value}`;
+                }
+            }
+        </script>
+
+    </body>
 </html>

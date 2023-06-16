@@ -20,10 +20,13 @@
     </script>
     <a href="/mypage"><input type="button" name="mypage" value="マイページ"></a>
     <p>新着情報</p>
-        <% mono_data.forEach(function (v) {%>
-            <!--タグにデータ埋め込み-->
-            <img src = <%=v.img_path%> id=<%=v.mono_id%> onclick="imgclick(this)">
-        <%});%>
+    <% mono_data.forEach(function (v) {%>
+        <!--タグにデータ埋め込み-->
+        <img src = <%=v.img_path%> id=<%=v.mono_id%> onclick="imgclick(this)">
+    <%});%>
+
+
+      
     <script>
        function imgclick(ele){
             const id_value = ele.id; //自分自身のidの値を取得

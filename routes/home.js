@@ -76,12 +76,7 @@ router.get("/home",(req,res,next)=>{
     
     //即時関数で非同期実行
     (async () =>{
-        newmono_data = await getimg();
-        
-        //名前の表示確認テスト
-        /*for(let i = 0; i < 5; i++){
-            console.log(await getname(newmono_data[i].mono_id));
-        }*/
+        console.log(await getimg());
         
         //home.ejsファイルを描画
         res.render("../views/home",{mono_data:newmono_data});

@@ -10,10 +10,19 @@
     <h1>投稿したもの</h1>
     <p>投稿中</p>
     
-    <a href="/views/edit.ejs">
-        <img src="/demo.png" alt="基礎電気回路教科書">
+    <a href="/edit">
+        <img src="/demo.png" alt="基礎電気回路教科書" onclick="myFunction()">
     </a>
-
+        
+    <script>
+        function myFunction() {
+            // クリック時に実行するJavaScriptのコード
+            const id_value = "your_id_value"; // IDの値を適切なものに置き換える
+            if (id_value) { // 念のため参照できるか確認
+                location.href = `/detail/${id_value}`;
+            }
+        }
+    </script>
 
 </body>
 </html>
