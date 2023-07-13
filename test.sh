@@ -14,3 +14,4 @@ fi
 
 #sudo /opt/lampp/lampp start
 
+#npm start

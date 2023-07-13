@@ -34,14 +34,16 @@ async function getimg(){
         });
     });
 
-    const rows = await new Promise((resolve,reject)=>{
-        //LIMITの後の数字で取得件数を変更できる(undefinedまで参照するとエラーになるので注意)
-        connection.query('SELECT * FROM img_table ',(err,rows)=>{
-            
-            if(err) reject(err);//sql文でエラー
-            resolve(rows);
+    const rows = await new Promise((resolve, reject) => {
+        // LIMITの後の数字で取得件数を変更できる(undefinedまで参照するとエラーになるので注意)
+        connection.query('SELECT * FROM img_table ', (err, rows) => {
+          if (err) reject(err); //sql文でエラー
+          resolve(rows);
         });
-    });
+      });
+      
+      newmono_data = rows; // newmono_dataにデータを代入
+      
 
     //console.log(rows);
     return rows;
