@@ -36,7 +36,6 @@ app.set('view engine','ejs');
 app.use(LoginRouter);
 app.use(HomeRouter);
 app.use(newRouter);
-app.use(detailRouter);
 app.use(mypageRouter);
 app.use(searchRouter);
 
