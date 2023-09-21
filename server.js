@@ -26,6 +26,9 @@ const uploadRouter = require('./routes/upload');
 //mypageからのルータ
 const editRouter = require('./routes/edit');
 
+//postng.ejsからのルータ
+const delete_resultRouter = require('./routes/delete_result');
+
 //静的ファイル設定
 app.use(express.static("public"));
 
@@ -44,6 +47,9 @@ app.use(guideRouter);
 app.use(uploadRouter);
 //mypageからのルータ
 app.use(editRouter);
+
+//postng.ejsからのルータ
+app.use(delete_resultRouter);
 
 app.get("/",(req,res)=>{
 
