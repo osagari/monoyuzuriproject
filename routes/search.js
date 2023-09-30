@@ -1,44 +1,63 @@
-const express = require('express'); //express 読み込み
-const bodyparser = require('body-parser');
-const mysql = require('mysql');
+const express = require('express');
 
 //router
 const router = express.Router();
 
-router.use(bodyparser.urlencoded({extended: false}));
-router.use(bodyparser.json());
-router.use(logger);
+const mysql = require('mysql');
 
-// mysqlとの接続情報
-/*const dbinfo = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'monoyuzuri_db'
+//dotenv読み込み
+const dotenv = require('dotenv');
+const dbinfo = dotenv.config();
+
+
+
+//データベースとの接続プール
+//config()のオブジェクト.parsed -> json形式で記述の意
+const pool = mysql.createPool({
+    connectionLimit: dbinfo.parsed.CCL,
+    host: dbinfo.parsed.HOSTNAME,
+    user: dbinfo.parsed.DBUSER,
+    password: dbinfo.parsed.PASSWORD,
+    database: dbinfo.parsed.DBNAME,
+    timezone: "jst" ,
+    charset: "utf8mb4"
 });
-dbinfo.connect((err) =>{
-    if(err) throw err;//接続エラーとなったら例外を出す
-    console.log('database is connectied.'); 
-    let sql = "select student_num from user";//sql文
-    //クエリ文で学籍番号を取得
-    dbinfo.query(sql,(err,result,fileds)=>{
-        if(err) throw err;
-        console.log(result); //取得してきたデータはjson形式
-    });
-});*/
-
 // /search
 router.get("/search",(req,res)=>{
-    console.log(req.query.str);
-    res.render("../views/search",{title:"search"});
+    console.log(req.query.word);
+    pool.getConnection((err,connection)=>{
+        if(err) throw err; //接続失敗時に例外を出す
+        
+        console.log("接続が完了しました");
+
+        const sql='SELECT * FROM img_table';
+        connection.query(sql,(err,rows)=>{
+            connection.release();
+
+            if(err){
+                console.log(err);
+            }
+            console.log(rows[0].img_path);
+            
+        });
+    });
+
+    pool.getConnection((err,connection)=>{
+        if(err) throw err; //接続失敗時に例外を出す
+        
+        console.log("タイトル名の接続が完了しました");
+
+        const sql='SELECT mono_name FROM product_table';
+        connection.query(sql,(err,rows)=>{
+            connection.release();
+
+            if(err){
+                console.log(err);
+            }
+            console.log(rows[0].mono_name);
+            
+        });
+    });
+    res.render("../views/home",{mono_data:newmono_data});
 });
-
-//urlを表示するログ
-function logger(req,res,next){
-    if(req.originalUrl !== undefined){
-        console.log(req.originalUrl);
-    }
-    next();
-}
-
 module.exports = router;
