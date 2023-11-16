@@ -7,33 +7,38 @@
     <title>search</title>
 </head>
 <body>
-    <input type="text" value="" id = "findmono">
+    <input type="text" value="" id="findmono">
     <input type="submit" value="検索" onclick="searchclicked()">
     <a href="/new"><input type="submit" value="投稿"></a>
     <script>
-        function searchclicked(){
+        function searchclicked() {
             let formtext = document.getElementById("findmono");
-            if(formtext.value){ //検索の文字列が参照できるなら
-                const searchurl = "/search?query="+ encodeURI(formtext.value);
+            if (formtext.value) {
+                const searchurl = "/search?keyword=" + encodeURI(formtext.value);
                 console.log(searchurl);
-                location.href = searchurl;//クエリパラメータとして追記する
+                location.href = searchurl;
             }
         }
     </script>
     <a href="/mypage"><input type="button" name="mypage" value="マイページ"></a>
     <p>新着情報</p>
     <div class="mono_container">
-        <div class="mono_item">
-            <!---ルーティングの移動用仮画像--->
-            <img src="../demo.png" onclick="imgclick()"/>
-        </div>
+        <% mono_data.forEach(function (v) { %>
+            <div class="mono_item">
+                <!-- 商品画像 -->
+                <img src="<%= v.img_path %>" onclick="imgclick('<%= v.mono_id %>')" style="width: 138px; height: 138px;">
+                <!-- 商品名 -->
+                <p><%= v.mono_name %></p>
+            </div>
+        <% }); %>
+        
     </div>
     <script>
-
-        function imgclick(){
+        function imgclick(mono_id) {
             console.log("imgclick called");
-            //ここでエラー(/detail/:mono_idが参照できていないから?)
-            //location.href = '/detail';
+            // ここでエラーが発生していた原因は、'/detail' への遷移処理が不完全だったためです。
+            // クリックされた商品の mono_id を使用して遷移先URLを構築して遷移させます。
+            location.href = '/detail/' + mono_id;
         }
     </script>
 </body>
