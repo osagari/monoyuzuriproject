@@ -74,16 +74,26 @@ async function getname(id){
 }
 
 // /home
-router.get("/home",(req,res,next)=>{
-    
-    //即時関数で非同期実行
-    (async () =>{
-        console.log(await getimg());
-        
-        //home.ejsファイルを描画
-        res.render("../views/home",{mono_data:newmono_data});
-    })().catch(next);
+router.get("/home", async (req, res, next) => {
+    try {
+        const imgData = await getimg();
+
+        // imgData の各要素に対して商品名を取得して新しいプロパティを追加
+        const imgDataWithNames = await Promise.all(imgData.map(async (imgItem) => {
+            const nameData = await getname(imgItem.mono_id);
+            return {
+                ...imgItem,
+                mono_name: nameData[0].mono_name, // 商品名を新しいプロパティに追加
+            };
+        }));
+
+        // home.ejsファイルを描画
+        res.render("../views/home", { mono_data: imgDataWithNames });
+    } catch (error) {
+        next(error);
+    }
 });
+
 
 //エラー処理
 router.get((err,req,res,next) => {
