@@ -23,15 +23,25 @@
     <a href="/mypage"><input type="button" name="mypage" value="マイページ"></a>
     <p>新着情報</p>
     <div class="mono_container">
-        <% mono_data.forEach(function (v) { %>
-            <div class="mono_item">
-                <!-- 商品画像 -->
-                <img src="<%= v.img_path %>" onclick="imgclick('<%= v.mono_id %>')" style="width: 138px; height: 138px;">
-                <!-- 商品名 -->
-                <p><%= v.mono_name %></p>
-            </div>
-        <% }); %>
-        
+        <% if (typeof mono_data === 'Array') { %>
+            <% Object.keys(mono_data).forEach(function (v) { %>
+                <div class="mono_item">
+                    <!-- 商品画像 -->
+                    <img src="<%= v.img_path %>" onclick="imgclick('<%= v.mono_id %>')" style="width: 138px; height: 138px;">
+                    <!-- 商品名 -->
+                    <p><%= v.mono_name %></p>
+                </div>
+            <% }); %>
+        <% } else if(typeof mono_data ==='Object') {%>
+        <div class="mono_item">
+            <!-- 商品画像 -->
+            <img src="<%= mono_data.img_path %>" onclick="imgclick('<%= mono_data.mono_id %>')" style="width: 138px; height: 138px;">
+            <!-- 商品名 -->
+            <p><%= mono_data.mono_name %></p>
+        </div>
+        <% } else { %>
+            <p>データがありません</p>
+        <% } %>
     </div>
     <script>
         function imgclick(mono_id) {
