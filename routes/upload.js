@@ -6,8 +6,7 @@ const router = express.Router();
 
 // /home
 router.get("/upload",(req,res)=>{
-    
-    //home.ejsファイルを描画
+
     res.render("../views/upload");
 });
 

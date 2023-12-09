@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search</title>
+</head>
+<body>
+    <input type="text" value="" id="findmono">
+    <input type="submit" value="検索" onclick="searchclicked()">
+    <a href="/new"><input type="submit" value="投稿"></a>
+    <script>
+        function searchclicked() {
+            let formtext = document.getElementById("findmono");
+            if (formtext.value) {
+                const searchurl = "/search?keyword=" + encodeURI(formtext.value);
+                console.log(searchurl);
+                location.href = searchurl;
+            }
+        }
+    </script>
+    <a href="/mypage"><input type="button" name="mypage" value="マイページ"></a>
+    <p>新着情報</p>
+    <div class="mono_container">
+        <% if (typeof mono_data === 'Array') { %>
+            <% Object.keys(mono_data).forEach(function (v) { %>
+                <div class="mono_item">
+                    <!-- 商品画像 -->
+                    <img src="<%= v.img_path %>" onclick="imgclick('<%= v.mono_id %>')" style="width: 138px; height: 138px;">
+                    <!-- 商品名 -->
+                    <p><%= v.mono_name %></p>
+                </div>
+            <% }); %>
+        <% } else if(typeof mono_data ==='Object') {%>
+        <div class="mono_item">
+            <!-- 商品画像 -->
+            <img src="<%= mono_data.img_path %>" onclick="imgclick('<%= mono_data.mono_id %>')" style="width: 138px; height: 138px;">
+            <!-- 商品名 -->
+            <p><%= mono_data.mono_name %></p>
+        </div>
+        <% } else { %>
+            <p>データがありません</p>
+        <% } %>
+    </div>
+    <script>
+        function imgclick(mono_id) {
+            console.log("imgclick called");
+            // ここでエラーが発生していた原因は、'/detail' への遷移処理が不完全だったためです。
+            // クリックされた商品の mono_id を使用して遷移先URLを構築して遷移させます。
+            location.href = '/detail/' + mono_id;
+        }
+    </script>
+</body>
+</html>

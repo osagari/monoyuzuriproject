@@ -7,11 +7,32 @@
     <title>monodetail</title>
 </head>
 <body>
-    <!--本来画像はサーバから取得(仮の確認としてmono_idを出力)--->
-    <%-detail_id%>
+    <a href="/home"><input type="submit" value="戻る"></a>
+    <p>商品名:<%-mono[0].mono_name%></p>
+    <img src=<%=path[0].img_path%>>
+    <input type="submit" value="お気に入り登録">
+    <input type="button" value="譲ってもらう" onclick="hand_over()">
+    <script>
+        console.log(location.href);
+        function hand_over(){
+            if(window.confirm("譲ってもらいますか?")){
+                const id = location.href.split("/")[4];
+                location.href = `/chat/${id}`;
+            }
+        }
+    </script>
+    <p>投稿者名</p>
+    
     <p>物の説明</p>
-    <input type = "text">
-    <p>コメント</p>
-    <input type = "text">
+    <p><%- mono[0].mono_explanation%></p>
+    <p>コメント</p><hr>
+    <%comment.forEach(function (v){%>
+        <h3><%=v.student_num%></h3><br>
+        <p><%=v.comment_text%></p><br>
+    <%})%>
+    <form id="commentform" action="" method="post" enctype="multipart/form-data">
+        <textarea placeholder="コメントする" name="comment"></textarea>
+        <input type="submit" value="コメントを送る">
+    </form>
 </body>
 </html>
