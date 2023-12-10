@@ -19,5 +19,6 @@ router.get("/login/privacy",(req,res) =>{
     res.render("../views/privacy");
 });
 
+
 //他のファイルから参照できるようにする
 module.exports = router;

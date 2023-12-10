@@ -7,9 +7,22 @@
     <title>home</title>
 </head>
 <body>
-    <input type="text" value="" id = "findmono">
-    <input type="submit" value="検索" onclick="searchclicked()">
-    <a href="/new"><input type="submit" value="投稿"></a>
+    
+    <header>
+        <input type="text" value="" id="findmono">
+        <input type="submit" value="検索" onclick="searchclicked()">
+        <a href="/new"><input type="submit" value="投稿"></a>
+    </header>
+    
+    <style>
+
+        header{
+            background-color: greenyellow;
+        }
+
+    </style>
+
+
     <script>
         function searchclicked(){
             let formtext = document.getElementById("findmono");
@@ -22,7 +35,9 @@
     <p>新着情報</p>
     <% mono_data.forEach(function (v) {%>
         <!--タグにデータ埋め込み-->
-        <img src = <%=v.img_path%> id=<%=v.mono_id%> onclick="imgclick(this)">
+        <img src = <%=v.img_path%> id=<%=v.mono_id%> onclick="imgclick(this)" style="width: 200px; height: 200px;">
+         <!-- 物の名前を表示する処理 -->
+        <p><%= v.mono_name %></p>
     <%});%>
 
     <script>
@@ -31,7 +46,7 @@
             if(id_value){ //念のため参照できるか確認
                 location.href = `/detail/${id_value}`;
             }
-        }
+        } 
     </script>
 </body>
 </html>
