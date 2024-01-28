@@ -5,11 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>search</title>
+    <!--CSS-->
+    <link rel="stylesheet" href="/css/base.css">
 </head>
 <body>
-    <input type="text" value="" id="findmono">
-    <input type="submit" value="検索" onclick="searchclicked()">
-    <a href="/new"><input type="submit" value="投稿"></a>
+    
+    <header>
+        <h2>osagari</h2>
+        <input type="text" value="" id="findmono">
+        <input type="submit" value="検索" onclick="searchclicked()">
+        <a href="/mypage"><input type="button" name="mypage" value="マイページ"></a>
+        <a href="/new"><input type="submit" value="投稿"></a>
+    </header>
+
     <script>
         function searchclicked() {
             let formtext = document.getElementById("findmono");
@@ -20,8 +28,9 @@
             }
         }
     </script>
-    <a href="/mypage"><input type="button" name="mypage" value="マイページ"></a>
+    
     <p>新着情報</p>
+    <hr />
     <div class="mono_container">
         <% if (typeof mono_data === 'Array') { %>
             <% Object.keys(mono_data).forEach(function (v) { %>
