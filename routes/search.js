@@ -81,20 +81,32 @@ async function getname(id) {
 // /search
 router.get("/search", async (req, res, next) => {
     try {
-        const keyword = req.query.keyword; // 検索キーワードをクエリパラメータから取得
-
+        const keyword = req.query.query; // 検索キーワードをクエリパラメータから取得
+        
         if (!keyword) {
-            // キーワードが指定されていない場合は全データを表示
-            const imgData = await getimg();
-            res.render("../views/search", { mono_data: imgData });
+            // キーワードが指定されていない場合は「データがありません」の文字を表示
+            res.render("../views/search", { mono_data: "データがありません" });
         } else {
+            const imgData = await getimg();
+
+            // imgData の各要素に対して商品名を取得して新しいプロパティを追加
+            const imgDataWithNames = await Promise.all(imgData.map(async (imgItem) => {
+                const nameData = await getname(imgItem.mono_id);
+                return {
+                    ...imgItem,
+                    mono_name: nameData[0].mono_name, // 商品名を新しいプロパティに追加
+                };
+            }));
+            
+
             // キーワードが指定されている場合は該当するデータを表示
-            const searchData = await searchByKeyword(keyword);
-            res.render("../views/search", { mono_data: searchData });
+            // const searchData = await searchByKeyword(keyword);
+            res.render("../views/search", { mono_data: imgDataWithNames });
         }
     } catch (error) {
         next(error);
     }
 });
+
 
 module.exports = router;
