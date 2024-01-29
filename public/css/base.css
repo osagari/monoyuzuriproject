@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+  
+  header {
+    background-color: #65eb53;
+    color: #000000;
+    padding: 10px;
+  }
+
+  .img_title {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }

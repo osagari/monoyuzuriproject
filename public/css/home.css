@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+  
+  header {
+    background-color: #65eb53;
+    color: #000000;
+    padding: 10px;
+  }
+
+  .imgarea {
+    float: left;
+    max-width: 184px;
+    width: 100%;
+    margin: auto;
+    display: block;
+    text-align: center;
+  }
+  
+  .img_title {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .image-container {
+    display: grid;
+    gap: 26px;
+    grid-template-columns: repeat(auto-fit, minmax(138px, 1fr));
+    margin-top: 6%;
+    margin-bottom: 50px;
+  }
+
+
+  img {
+    width: 138px;
+    height: 138px;
+    margin-right: 20px; /* 画像間の間隔を設定 */
+    padding: 12px;
+  }
+
+  .img {
+    margin: auto;
+  }
