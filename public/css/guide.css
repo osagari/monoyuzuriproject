@@ -1,364 +1,176 @@
 @charset "UTF-8";
 
-.page-header{
+.page-header {
   background-color: rgb(156, 232, 106);
-
 }
 
 /*基準 PC向けサイズ1440*/
-h1{
+h1 {
   font-size: 45px;
-  margin: 0 auto; 
+  margin: 0 auto;
   text-align: center;
   padding: 40px;
 }
-.search-box{
+.search-box {
   font-size: 35px;
   background-color: white;
 }
-.search-button{
+.search-button {
   color: whitesmoke;
-  background-color: gray ;
+  background-color: gray;
   font-size: 35px;
 }
-.mypage-link{
+.mypage-link {
   background-color: rgb(208, 208, 208);
   font-size: 35px;
 }
-.toukou-link{
+.toukou-link {
   background-color: rgb(255, 77, 77);
   color: whitesmoke;
   font-size: 35px;
 }
 
-  /*ちょっと小さいサイズ*/
-@media screen and (max-width: 1400px){
-  h1{
-    font-size: 30px;
-    margin: 0 auto; 
-    text-align: center;
-    background-color: rgb(156, 232, 106);
-    padding: 40px;
-  }
-  .search-box{
-    font-size: 30px;
-  }
-  .search-button{
-    color: whitesmoke;
-    background-color: gray ;
-    font-size: 20px;
-  }
-  .mypage-link{
-    background-color: rgb(208, 208, 208);
-    font-size: 20px;
-  }
-  .toukou-link{
-    background-color: rgb(255, 77, 77);
-    color: whitesmoke;
-    font-size: 20px;
-  }
-  
-}
-
-
-  
-h2{
-    text-align: center;
-    font-size: 60px;
-}
-
-h3{
-    font-size: 35px;
-    border-bottom: 2px solid black;
-}
-
-p{
-    font-size: 25px;
-}
-
-
-/*中央ぞろえ参考サイト
-https://engineer-labo.com/image_text_center/*/
-.kensaku{
-    width:900px;
-    margin:0 auto;
-}
-.kensaku img {
-    width: 100%;
-}
-
-.toukou{
-  width:500px;
-  margin:0 auto;
-}
-.toukou img{
-  width: 100%;
-}
-
-.img-ug1-3{
-  width:900px;
-  margin:0 auto;
-}
-.img-ug1-3 img{
-  width: 100%;
-}
-
-.kanryou{
-  width:700px;
-  margin:0 auto;
-}
-.kanryou img{
-  width: 100%;
-}
-
-.img-ug-2-2{
-  width:700px;
-  margin:0 auto;
-}
-.img-ug-2-2 img{
-  width: 100%;
-}
-
-.img-ug-2-3{
-  width:500px;
-  margin:0 auto;
-}
-.img-ug-2-3 img{
-  width: 100%;
-}
-
-.img-ug-3-1{
-  width:900px;
-  margin:0 auto;
-}
-.img-ug-3-1 img{
-  width: 100%;
-}
-
-
-
-/*ここからタブ選択ラジオボタン内の表示
-タブ選択を参考にしたサイトhttps://style.potepan.com/articles/21437.html*/
-.area {
-    width: 1000px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-    display: flex;
-  }
-   
-  .tab_class {
-    width: calc(200%/6);
-    height: 50px;    
-    line-height: 50px;
-    font-size: 30px;
-    text-align: center;
-    display: block;
-    float: left;
-    order: -1;
-  }
-   
-  input[name="tab_name"] {
-    display: none;
-  }
-   
-  /*タブ選択ラジオボタンを選択した時の色*/
-  input:checked + .tab_class {  
-    color: rgb(203, 41, 20);
-    
-  }
-
-
-  /*ボーダーラインは途中で色変更不可*/
-
-   
-  .content_class {
-    display: none;
-    width: 100%;
-  }
-   
-  input:checked + .tab_class + .content_class {
-    display: block;
-  }
-/*ここまでタブ選択ラジオボタン*/
-
-
-.page-header{
-  background-color: rgb(156, 232, 106);
-
-}
-
-/*基準 PC向けサイズ1440*/
-h1{
-  font-size: 45px;
-  margin: 0 auto; 
+h2 {
   text-align: center;
-  padding: 40px;
+  font-size: 60px;
 }
-.search-box{
+
+h3 {
   font-size: 35px;
-  background-color: white;
-}
-.search-button{
-  color: whitesmoke;
-  background-color: gray ;
-  font-size: 35px;
-}
-.mypage-link{
-  background-color: rgb(208, 208, 208);
-  font-size: 35px;
-}
-.toukou-link{
-  background-color: rgb(255, 77, 77);
-  color: whitesmoke;
-  font-size: 35px;
+  border-bottom: 2px solid black;
 }
 
-  /*ちょっと小さいサイズ*/
-@media screen and (max-width: 1400px){
-  h1{
-    font-size: 30px;
-    margin: 0 auto; 
-    text-align: center;
-    background-color: rgb(156, 232, 106);
-    padding: 40px;
-  }
-  .search-box{
-    font-size: 20px;
-  }
-  .search-button{
-    color: whitesmoke;
-    background-color: gray ;
-    font-size: 20px;
-  }
-  .mypage-link{
-    background-color: rgb(208, 208, 208);
-    font-size: 20px;
-  }
-  .toukou-link{
-    background-color: rgb(255, 77, 77);
-    color: whitesmoke;
-    font-size: 20px;
-  }
-  
+p {
+  font-size: 25px;
 }
-
-
-  
-h2{
-    text-align: center;
-    font-size: 60px;
-}
-
-h3{
-    font-size: 35px;
-    border-bottom: 2px solid black;
-}
-
-p{
-    font-size: 25px;
-}
-
 
 /*中央ぞろえ参考サイト
 https://engineer-labo.com/image_text_center/*/
-.kensaku{
-    width:900px;
-    margin:0 auto;
+.kensaku {
+  width: 900px;
+  margin: 0 auto;
 }
 .kensaku img {
-    width: 100%;
-}
-
-.toukou{
-  width:500px;
-  margin:0 auto;
-}
-.toukou img{
   width: 100%;
 }
 
-.img-ug1-3{
-  width:900px;
-  margin:0 auto;
+.toukou {
+  width: 500px;
+  margin: 0 auto;
 }
-.img-ug1-3 img{
+.toukou img {
   width: 100%;
 }
 
-.kanryou{
-  width:700px;
-  margin:0 auto;
+.img-ug1-3 {
+  width: 900px;
+  margin: 0 auto;
 }
-.kanryou img{
+.img-ug1-3 img {
   width: 100%;
 }
 
-.img-ug-2-2{
-  width:700px;
-  margin:0 auto;
+.kanryou {
+  width: 700px;
+  margin: 0 auto;
 }
-.img-ug-2-2 img{
+.kanryou img {
   width: 100%;
 }
 
-.img-ug-2-3{
-  width:500px;
-  margin:0 auto;
+.img-ug-2-2 {
+  width: 700px;
+  margin: 0 auto;
 }
-.img-ug-2-3 img{
+.img-ug-2-2 img {
   width: 100%;
 }
 
-.img-ug-3-1{
-  width:900px;
-  margin:0 auto;
+.img-ug-2-3 {
+  width: 500px;
+  margin: 0 auto;
 }
-.img-ug-3-1 img{
+.img-ug-2-3 img {
   width: 100%;
 }
 
-
+.img-ug-3-1 {
+  width: 900px;
+  margin: 0 auto;
+}
+.img-ug-3-1 img {
+  width: 100%;
+}
 
 /*ここからタブ選択ラジオボタン内の表示
 タブ選択を参考にしたサイトhttps://style.potepan.com/articles/21437.html*/
 .area {
-    width: 1000px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-    display: flex;
-  }
-   
-  .tab_class {
-    width: calc(200%/6);
-    height: 50px;    
-    line-height: 50px;
-    font-size: 30px;
-    text-align: center;
-    display: block;
-    float: left;
-    order: -1;
-  }
-   
-  input[name="tab_name"] {
-    display: none;
-  }
-   
-  /*タブ選択ラジオボタンを選択した時の色*/
-  input:checked + .tab_class {  
-    color: rgb(203, 41, 20);
-    
-  }
+  width: 1000px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  display: flex;
+}
 
+.tab_class {
+  width: calc(200% / 6);
+  height: 50px;
+  line-height: 50px;
+  font-size: 30px;
+  text-align: center;
+  display: block;
+  float: left;
+  order: -1;
+}
 
-  /*ボーダーラインは途中で色変更不可*/
+input[name="tab_name"] {
+  display: none;
+}
 
-   
-  .content_class {
-    display: none;
-    width: 100%;
-  }
-   
-  input:checked + .tab_class + .content_class {
-    display: block;
-  }
+/*タブ選択ラジオボタンを選択した時の色*/
+input:checked + .tab_class {
+  color: rgb(203, 41, 20);
+}
+
+/*ボーダーラインは途中で色変更不可*/
+
+.content_class {
+  display: none;
+  width: 100%;
+}
+
+input:checked + .tab_class + .content_class {
+  display: block;
+}
 /*ここまでタブ選択ラジオボタン*/
+
+.page-header {
+  background-color: rgb(156, 232, 106);
+}
+
+/*ちょっと小さいサイズ*/
+@media screen and (max-width: 1400px) {
+  h1 {
+    font-size: 30px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgb(156, 232, 106);
+    padding: 40px;
+  }
+  .search-box {
+    font-size: 20px;
+  }
+  .search-button {
+    color: whitesmoke;
+    background-color: gray;
+    font-size: 20px;
+  }
+  .mypage-link {
+    background-color: rgb(208, 208, 208);
+    font-size: 20px;
+  }
+  .toukou-link {
+    background-color: rgb(255, 77, 77);
+    color: whitesmoke;
+    font-size: 20px;
+  }
+}
