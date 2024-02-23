@@ -10,6 +10,8 @@ h1 {
   margin: 0 auto;
   text-align: center;
   padding: 40px;
+  display: flex;
+  height: 150px;
 }
 .search-box {
   font-size: 35px;
@@ -19,15 +21,28 @@ h1 {
   color: whitesmoke;
   background-color: gray;
   font-size: 35px;
+  padding-right: 10px;
+}
+.mypage-button {
+  width: 200px;
+  height: 70px;
+  background-color: rgb(208, 208, 208);
+  margin-left: 10px;
 }
 .mypage-link {
-  background-color: rgb(208, 208, 208);
   font-size: 35px;
+}
+.toukou-button {
+  background-color: rgb(255, 77, 77);
+  color: whitesmoke;
+  width: 150px;
+  display: inline-block;
+  margin-left: 10px;
 }
 .toukou-link {
   background-color: rgb(255, 77, 77);
   color: whitesmoke;
-  font-size: 35px;
+  width: 500px;
 }
 
 h2 {
@@ -155,6 +170,38 @@ input:checked + .tab_class + .content_class {
     text-align: center;
     background-color: rgb(156, 232, 106);
     padding: 40px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  h3 {
+    width: 100%;
+    font-size: 25px;
+  }
+  p {
+    font-size: 20px;
+  }
+  .tab_class {
+    font-size: 15px;
+  }
+  .area {
+    width: 100%;
+  }
+  .content_class {
+    width: 96%;
+    margin: auto;
+  }
+  .kensaku {
+    width: 90%;
+  }
+  .toukou {
+    width: 50%;
+  }
+  .img-ug1-3 {
+    width: 90%;
+  }
+  .kanryou {
+    width: 90%;
   }
   .search-box {
     font-size: 20px;
