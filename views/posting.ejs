@@ -8,19 +8,45 @@
 </head>
 <body>
     <h1>投稿したもの</h1>
-    <p>投稿中</p>
-    <%for(let i=0; i<postdata.length; i++){%>
-        <%-postdata[i].mono_name%>
-        <img src=<%=postpaths[i].img_path%> id=<%=postdata[i].mono_id%> onclick="imgclick(this)">
-        <br><br>
-    <%}%>
+
+        <!---->
+                
+        <dialog>
+            <!-- モーダルウィンドウ内のテキストの指定 -->
+            <p>本当に削除しますか？</p>
+            <!-- モーダルウィンドウ内を閉じるボタンの指定 -->
+            <button id="yes">はい</button>
+            <button id="no">いいえ</button>
+          </dialog>
+          <!-- モーダルウィンドウ内を開くボタンの指定 -->
+          <button id="delete">削除</button>       
+
     <script>
-        function imgclick(ele){
-            const id_value = ele.id; //自分自身のidの値を取得
-            if(id_value){ //念のため参照できるか確認
-                location.href = `/mypage/detail/:${id_value}`;
-            }
-        }
+    // Javascript宣言
+    let dialog = document.querySelector('dialog'); // dialog（モーダルダイアログ）の宣言
+    let btn_delete = document.getElementById('delete'); // open（開く）ボタンの宣言
+    let btn_yes = document.getElementById('yes');//yes(はい)ボタンの宣言
+    let btn_no = document.getElementById('no'); // No（閉じる）ボタンの宣言
+    
+    // 削除ボタンをクリックした場合の処理
+    btn_delete.addEventListener('click', function() { 
+    dialog.showModal();
+    }, false);
+    
+    // yesをクリックした場合の処理
+    btn_yes.addEventListener('click', function() {
+            // ここに削除処理を追加()
+             // 別の EJS ファイルに遷移する
+             dialog.close();
+             window.location.href = '/delete_result'; // 遷移先の URL を指定    
+        }, false);
+        
+    // Noをクリックした場合の処理
+    btn_no.addEventListener('click', function() {
+    dialog.close();
+    }, false);
+
     </script>
+
 </body>
 </html>

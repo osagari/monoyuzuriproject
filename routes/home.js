@@ -34,14 +34,16 @@ async function getimg(){
         });
     });
 
-    const rows = await new Promise((resolve,reject)=>{
-        //LIMITの後の数字で取得件数を変更できる(undefinedまで参照するとエラーになるので注意)
-        connection.query('SELECT * FROM img_table ',(err,rows)=>{
-            
-            if(err) reject(err);//sql文でエラー
-            resolve(rows);
+    const rows = await new Promise((resolve, reject) => {
+        // LIMITの後の数字で取得件数を変更できる(undefinedまで参照するとエラーになるので注意)
+        connection.query('SELECT * FROM img_table ', (err, rows) => {
+          if (err) reject(err); //sql文でエラー
+          resolve(rows);
         });
-    });
+      });
+      
+      newmono_data = rows; // newmono_dataにデータを代入
+      
 
     //console.log(rows);
     return rows;
@@ -72,21 +74,26 @@ async function getname(id){
 }
 
 // /home
-router.get("/home",(req,res,next)=>{
-    
-    //即時関数で非同期実行
-    (async () =>{
-        newmono_data = await getimg();
-        
-        //名前の表示確認テスト
-        /*for(let i = 0; i < 5; i++){
-            console.log(await getname(newmono_data[i].mono_id));
-        }*/
-        
-        //home.ejsファイルを描画
-        res.render("../views/home",{mono_data:newmono_data});
-    })().catch(next);
+router.get("/home", async (req, res, next) => {
+    try {
+        const imgData = await getimg();
+
+        // imgData の各要素に対して商品名を取得して新しいプロパティを追加
+        const imgDataWithNames = await Promise.all(imgData.map(async (imgItem) => {
+            const nameData = await getname(imgItem.mono_id);
+            return {
+                ...imgItem,
+                mono_name: nameData[0].mono_name, // 商品名を新しいプロパティに追加
+            };
+        }));
+
+        // home.ejsファイルを描画
+        res.render("../views/home", { mono_data: imgDataWithNames });
+    } catch (error) {
+        next(error);
+    }
 });
+
 
 //エラー処理
 router.get((err,req,res,next) => {

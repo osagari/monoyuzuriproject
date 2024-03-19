@@ -9,14 +9,13 @@
 <body>
     <a href="/home"><input type="submit" value="戻る"></a>
     <p>商品名:<%- mono_obj[0].mono_name%></p>
-    <input type="submit" value="お気に入り登録">
+    
     <input type="submit" value="コメントする">
-    <input type="submit" value="再編集する">
+    
     <input type="submit" value="投稿を削除する">
     
     <p>物の説明</p>
-    <p><%- mono_obj[0].mono_explanation%></p>
-    <p>コメント</p>
+        <p>コメント</p>
     <textarea id="detailcomment" placeholder="コメントする"></textarea>
     <input type="button" name="sendcomment" value="コメントを送る">
 </body>

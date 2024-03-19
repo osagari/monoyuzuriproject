@@ -16,11 +16,18 @@ const detailRouter = require('./routes/detail');
 
 const mypageRouter = require('./routes/mypage');
 
-const serachRouter = require('./routes/search');
-
-const chatRouter = require('./routes/chat');
+const searchRouter = require('./routes/search');
+//const monoRouter = require('./routes/mono');
 
 const guideRouter = require('./routes/guide');
+
+const uploadRouter = require('./routes/upload');
+
+//mypageからのルータ
+const editRouter = require('./routes/edit');
+
+//postng.ejsからのルータ
+const delete_resultRouter = require('./routes/delete_result');
 
 //静的ファイル設定
 app.use(express.static("public"));
@@ -32,11 +39,17 @@ app.set('view engine','ejs');
 app.use(LoginRouter);
 app.use(HomeRouter);
 app.use(newRouter);
-app.use(detailRouter);
 app.use(mypageRouter);
-app.use(serachRouter);
-app.use(chatRouter);
+app.use(searchRouter);
+
+//app.use(monoRouter);
 app.use(guideRouter);
+app.use(uploadRouter);
+//mypageからのルータ
+app.use(editRouter);
+
+//postng.ejsからのルータ
+app.use(delete_resultRouter);
 
 app.get("/",(req,res)=>{
 
