@@ -13,37 +13,7 @@ h1 {
   display: flex;
   height: 150px;
 }
-.search-box {
-  font-size: 35px;
-  background-color: white;
-}
-.search-button {
-  color: whitesmoke;
-  background-color: gray;
-  font-size: 35px;
-  padding-right: 10px;
-}
-.mypage-button {
-  width: 200px;
-  height: 70px;
-  background-color: rgb(208, 208, 208);
-  margin-left: 10px;
-}
-.mypage-link {
-  font-size: 35px;
-}
-.toukou-button {
-  background-color: rgb(255, 77, 77);
-  color: whitesmoke;
-  width: 150px;
-  display: inline-block;
-  margin-left: 10px;
-}
-.toukou-link {
-  background-color: rgb(255, 77, 77);
-  color: whitesmoke;
-  width: 500px;
-}
+
 
 h2 {
   text-align: center;
@@ -203,21 +173,5 @@ input:checked + .tab_class + .content_class {
   .kanryou {
     width: 90%;
   }
-  .search-box {
-    font-size: 20px;
-  }
-  .search-button {
-    color: whitesmoke;
-    background-color: gray;
-    font-size: 20px;
-  }
-  .mypage-link {
-    background-color: rgb(208, 208, 208);
-    font-size: 20px;
-  }
-  .toukou-link {
-    background-color: rgb(255, 77, 77);
-    color: whitesmoke;
-    font-size: 20px;
-  }
+  
 }
