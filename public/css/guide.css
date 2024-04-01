@@ -164,6 +164,12 @@ input:checked + .tab_class + .content_class {
   .kensaku {
     width: 90%;
   }
+  .img-ug-2-2 {
+    width: 90%;
+  }
+  .img-ug-2-3 {
+    width: 90%;
+  }
   .toukou {
     width: 50%;
   }
