@@ -33,6 +33,21 @@
     <p>新着情報</p>
     <hr />
     <div class="image-container">
+        <div class="row">
+            <% mono_data.forEach(function (v, index) { %>
+                <!-- インデックスが3の倍数の場合に新しい行を開始 -->
+                <% if (index % 3 === 0 && index !== 0) { %>
+                    </div><div class="row">
+                <% } %>
+                <div class="imgarea">
+                    <!-- 画像とタイトルの表示 -->
+                    <img class="img" src="<%= v.img_path %>" id="<%= v.mono_id %>" onclick="imgclick(this)" style="width: 200px; height: 200px;">
+                    <p class="img_title"><%= v.mono_name %></p>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+    
     <div class="imgarea">
     <% mono_data.forEach(function (v) {%>
         <!--タグにデータ埋め込み-->
