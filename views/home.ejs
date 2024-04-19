@@ -7,6 +7,24 @@
     <title>home</title>
     <!--CSS-->
     <link rel="stylesheet" href="/css/home.css">
+    <style>
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .imgarea {
+            flex: 0 0 calc(33.333% - 20px); /* 画面幅の1/3で固定幅、20pxは余白 */
+            margin: 10px; /* 余白 */
+        }
+        .img {
+            width: 100%; /* 画像を親要素に合わせて100%にする */
+            height: auto;
+            cursor: pointer;
+        }
+        .img_title {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     
@@ -18,8 +36,18 @@
         <a href="/new"><input type="submit" value="投稿"></a>
     </header>
     
-   
-
+    <p>新着情報</p>
+    <hr />
+    <div class="image-container">
+        <!-- 画像を表示する部分 -->
+        <% mono_data.forEach(function (v) { %>
+            <div class="imgarea">
+                <!-- 画像とタイトルの表示 -->
+                <img class="img" src="<%= v.img_path %>" id="<%= v.mono_id %>" onclick="imgclick(this)">
+                <p class="img_title"><%= v.mono_name %></p>
+            </div>
+        <% }); %>
+    </div>
 
     <script>
         function searchclicked(){
@@ -28,38 +56,8 @@
                 location.href = `/search?query=${formtext.value}`;//クエリパラメータとして追記する
             }
         }
-    </script>
-    
-    <p>新着情報</p>
-    <hr />
-    <div class="image-container">
-        <div class="row">
-            <% mono_data.forEach(function (v, index) { %>
-                <!-- インデックスが3の倍数の場合に新しい行を開始 -->
-                <% if (index % 3 === 0 && index !== 0) { %>
-                    </div><div class="row">
-                <% } %>
-                <div class="imgarea">
-                    <!-- 画像とタイトルの表示 -->
-                    <img class="img" src="<%= v.img_path %>" id="<%= v.mono_id %>" onclick="imgclick(this)" style="width: 200px; height: 200px;">
-                    <p class="img_title"><%= v.mono_name %></p>
-                </div>
-            <% }); %>
-        </div>
-    </div>
-    
-    <div class="imgarea">
-    <% mono_data.forEach(function (v) {%>
-        <!--タグにデータ埋め込み-->
-        <img class="img" src = <%=v.img_path%> id=<%=v.mono_id%> onclick="imgclick(this)" style="width: 200px; height: 200px;">
-         <!-- 物の名前を表示する処理 -->
-         <p class="img_title"><%= v.mono_name %></p>
-    <%});%>
-    </div>
-</div>
-
-    <script>
-       function imgclick(ele){
+        
+        function imgclick(ele){
             const id_value = ele.id; //自分自身のidの値を取得
             if(id_value){ //念のため参照できるか確認
                 location.href = `/detail/${id_value}`;
